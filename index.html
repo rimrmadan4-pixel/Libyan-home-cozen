@@ -188,7 +188,7 @@ body.sub .hero{min-height:0;padding:54px 18px 50px}body.sub .hero h1{font-size:c
 #inst button{font:inherit;border:0;cursor:pointer}
 #inst .go{background:var(--gold);color:#2b2018;font-weight:700;padding:8px 14px;border-radius:10px}
 #inst .x{background:transparent;color:var(--on);font-size:22px;padding:0 6px;opacity:.8}
-</style><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#1f5a40"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"></head><body>
+</style><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png"><meta name="theme-color" content="#1f5a40"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><script data-goatcounter="https://libyan-cozen.goatcounter.com/count" data-goatcounter-settings='{"no_onload":true}' async src="https://gc.zgo.at/count.js"></script></head><body>
 <header class="hero"><h1><span>المطبخ</span><span>الليبي</span><span>البيتي</span></h1><p>وصفات ليبية بيتية حقيقية</p><p dir="ltr">LIBYAN HOME KITCHEN</p><div class="bar"></div><div class="hstats" id="hstats"></div><p class="more">المزيد من الوصفات ستضاف قريبا</p></header>
 <div id="prog" aria-hidden="true"></div><button id="up" type="button" aria-label="العودة للأعلى">↑</button>
 <main><div id="home"><div class="tools"><input id="q" type="search" placeholder="ابحث عن وصفة أو مكوّن…" aria-label="بحث"></div><section class="fridge" id="fridge"><h2>🧊 شن عندك في الثلاجة؟ / اطبخ بالمكونات المتوفرة</h2><div class="fsub">اختر المكونات التي عندك لنقترح عليك وصفات مناسبة</div><div class="fin"><input id="fi" type="search" placeholder="اكتب مكونا واضغط Enter (مثلا: بطاطس، بندورة، دجاج، لحم)" autocomplete="off" aria-label="مكون"><div class="fsug" id="fsug" hidden></div></div><div class="sel" id="fsel"></div><div class="fsub">نوع الطبق</div><div class="chips" id="ftype"></div><div id="fres"></div></section><div class="tiles" id="tiles"></div><div class="grid" id="results" hidden></div><div class="empty" id="empty" hidden>لا توجد نتائج</div></div><div id="catv" hidden></div><div id="view" hidden></div></main>
@@ -330,6 +330,18 @@ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=
 window.addEventListener('appinstalled',function(){b.classList.remove('show');save()});
 if(ios&&!st)setTimeout(function(){show('<span>للتثبيت على الآيفون: اضغط زر المشاركة <b>⬆︎</b> ثم «إضافة إلى الشاشة الرئيسية»</span><button class="x" type="button" aria-label="إغلاق">×</button>')},4000);
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0&&window.__PWA)navigator.serviceWorker.register('sw.js').catch(function(){});
+})();
+
+
+(function(){
+function nm(){var h=location.hash,m=h.match(/^#recipe-(\d+)$/);if(m&&R[+m[1]])return R[+m[1]].ar;var c=h.match(/^#cat-(\w+)$/);if(c){var k=CATS.find(function(x){return x.k===c[1]});if(k)return 'قسم: '+(k.n||c[1])}return h?h.slice(1):'الصفحة الرئيسية'}
+function send(o,n){n=n||0;if(window.goatcounter&&goatcounter.count){try{goatcounter.count(o)}catch(e){}}else if(n<20)setTimeout(function(){send(o,n+1)},500)}
+function pv(){send({path:'/'+location.hash.replace(/^#/,''),title:nm()})}
+window.gcEv=function(p,t){send({path:p,title:t,event:true})};
+addEventListener('hashchange',pv);pv();
+document.addEventListener('play',function(e){var v=e.target;if(v.tagName!=='VIDEO'||v.__gc)return;v.__gc=1;var m=location.hash.match(/^#recipe-(\d+)$/);gcEv('video-'+(m?m[1]:'x'),'تشغيل فيديو: '+(m&&R[+m[1]]?R[+m[1]].ar:''))},true);
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#inst .go');if(b)gcEv('install-click','ضغط زر التثبيت')},true);
+addEventListener('appinstalled',function(){gcEv('installed','تم تثبيت الموقع')});
 })();
 
 </script></body></html>

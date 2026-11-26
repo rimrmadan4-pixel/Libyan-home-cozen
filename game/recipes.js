@@ -25,7 +25,7 @@
 window.GAME_DATA = {
   config: {
     siteUrl: 'https://rimrmadan4-pixel.github.io/Libyan-home-cozen/',
-    gameUrl: '',          // رابط صفحة اللعبة نفسها للمشاركة. إن تُرك فارغًا يُستعمل رابط الصفحة الحالية
+    gameUrl: 'https://rimrmadan4-pixel.github.io/Libyan-home-cozen/game/',          // رابط صفحة اللعبة نفسها للمشاركة. إن تُرك فارغًا يُستعمل رابط الصفحة الحالية
     questions: 5,         // عدد الأسئلة في الجولة
     points: 20,           // نقاط كل سؤال
     fridgeUrl: ''         // رابط أداة «شن عندك في الثلاجة؟» في موقعك (إن تُرك فارغًا يُفتح الموقع الرئيسي)

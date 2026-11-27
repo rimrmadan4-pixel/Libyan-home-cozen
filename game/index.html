@@ -243,6 +243,24 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
 .vbox video{width:100%; max-height:76dvh; aspect-ratio:9/16; object-fit:contain; background:#000; border-radius:16px}
 .vbox .btn{color:#fff; background:rgba(0,0,0,.55); border-color:rgba(255,255,255,.45)}
 
+/* العزومة */
+.mode.guest{background:var(--copper); color:var(--on-copper)}
+.guest{display:flex; align-items:flex-end; gap:14px; width:100%; text-align:start}
+.g-who{display:flex; flex-direction:column; align-items:center; gap:4px; flex:none; width:96px}
+.g-av{
+  width:92px; aspect-ratio:1; border-radius:50%; background:var(--plate); display:grid; place-items:center;
+  font-size:3.2rem; line-height:1; box-shadow:0 0 0 6px var(--ring), var(--shadow);
+  animation:arrive .6s cubic-bezier(.2,.9,.3,1.2) both;
+}
+.g-av.happy,.g-av.sad{animation:pop .4s ease-out}
+.g-name{font:700 .95rem/1.3 var(--f-display); color:var(--copper); text-align:center}
+.g-bubble{
+  margin:0 0 22px; padding:14px 16px; background:var(--plate); border-radius:22px; border-end-start-radius:6px;
+  font:800 1.2rem/1.6 var(--f-body); box-shadow:0 0 0 2px var(--line) inset; flex:1; min-width:0;
+  animation:fadein .4s .45s ease-out both;
+}
+@keyframes arrive{0%{transform:translateX(130%) rotate(12deg); opacity:0}100%{transform:none; opacity:1}}
+@keyframes fadein{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
 @keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 @media (prefers-reduced-motion:reduce){ *{animation:none!important; transition:none!important} }
@@ -265,6 +283,10 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
         <button class="mode fridge" id="startFridge" type="button">
           <span class="mode-t">🧊 شن عندك في الثلاجة؟</span>
           <span class="mode-d">اختر الطبق الذي تكفيه مكوّنات ثلاجتك</span>
+        </button>
+        <button class="mode guest" id="startGuest" type="button">
+          <span class="mode-t">🍽️ العزومة</span>
+          <span class="mode-d">ضيوفك وصلوا، قدّم لكل واحد الطبق اللي يبيه</span>
         </button>
       </div>
       <p class="best" id="best" hidden></p>
@@ -338,6 +360,12 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
   var PRAISE = ['ما شاء الله عليك، الله يبارك!', 'فالحة يا كبدي فالحة!', 'اختياراتك بنّة وصنّة!'];
   var S = null;
   var AUD = D.audio || {};
+  AUD.files = AUD.files || {};
+  /* أصوات العزومة (تسجيلاتك) وأصوات الخطأ */
+  ['gtitle','req_sweet','req_main','req_starter','req_meat','req_nomeat','req_fish','req_bird',
+   'g1_ok','g1_no','g2_ok','g2_no','g3_ok','g3_no','g4_ok','g4_no','g5_ok','g5_no','g6_ok','g6_no','fb_wrong','fb_partial'].forEach(function(k){
+    if(!AUD.files[k]) AUD.files[k] = k + '.mp3';
+  });
   var SOUND = true;
   try{ SOUND = localStorage.getItem('lkc-snd') !== '0'; }catch(e){}
 
@@ -413,6 +441,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
       tone(1568, 0.75, 0.9, 'sine', 0.08);
       applause(0.7, 2.6);
     },
+    bell:    function(){ tone(987.77, 0, 0.5, 'sine', 0.14); tone(783.99, 0.28, 0.7, 'sine', 0.14); },
     soft:    function(){ tone(440, 0, 0.25, 'sine', 0.15); tone(523.25, 0.15, 0.35, 'sine', 0.15); }
   };
   function playFile(f){ try{ var a = new Audio((AUD.dir || '') + f); var p = a.play(); if(p && p.catch) p.catch(function(){}); }catch(e){} }
@@ -459,6 +488,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     if(q.type === 'guess') return ['q_guess', 'hint_guess'];
     if(q.type === 'fridge') return ['q_fridge', 'hint_fridge'];
     if(q.type === 'intruder') return ['q_intruder'];
+    if(q.type === 'guest') return q.req.v ? ['gtitle', q.req.v] : ['gtitle'];
     return ['q_order', 'hint_order'];
   }
   function hasVoice(keys){ return keys.some(function(k){ return !!fileFor(k); }); }
@@ -511,10 +541,61 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     var options = shuffle([{ r: r, miss: [] }].concat(pick));
     return { type: 'fridge', r: r, fridge: shuffle(fridge), options: options, title: 'شن عندك في التلاجه؟' };
   }
+
+  /* ---------- العزومة: ضيوف يطلبون، وأنت تقدّم الطبق المناسب ---------- */
+  var GUESTS = [
+    { n: 'الحاجة مبروكة', k: 'g1', e: '👵', ok: 'الله يبارك فيك يا بنتي، هادي اللي نبيها!', no: 'لا يا بنتي، هادي ما طلبتهاش.' },
+    { n: 'عمي سالم', k: 'g2', e: '👴', ok: 'تسلم يدك، ريحتها تفتح النفس!', no: 'هههه، ما فهمتيش علي يا ضنايا.' },
+    { n: 'خالتي فتحية', k: 'g3', e: '👩', ok: 'يا سلام عليك، الأكل هكي ولا بلاش!', no: 'لا لا، هادي مش اللي نبي.' },
+    { n: 'أسامة', k: 'g4', e: '👦', ok: 'ياي! هادي أحلى أكلة!', no: 'ما نبيهاش هادي!' },
+    { n: 'العريس', k: 'g5', e: '🤵', ok: 'الله يعطيك العافية، عزومة تشرف!', no: 'معليش، كنت نبي حاجة ثانية.' },
+    { n: 'جارتنا أم محمد', k: 'g6', e: '🧕', ok: 'تسلمي يا جارة، ما قصرتي!', no: 'يا جارة، هادي مش اللي طلبتها منك.' }
+  ];
+  var MEATS = ['meat', 'minced_meat', 'liver', 'qadid', 'tripe', 'intestines', 'sheep_fat'];
+  var BIRD = ['chicken_breast', 'chicken_spice'], FISH = ['fish', 'tuna'];
+  function has(r, list){ return list.some(function(k){ return r.ing.indexOf(k) >= 0; }); }
+  function isMeaty(r){ return has(r, MEATS) || has(r, BIRD) || has(r, FISH); }
+  var REQS = [
+    { v: 'req_sweet', t: 'نبي حاجة حلوة مع الشاي', ok: isSweet, bad: function(r){ return !isSweet(r); } },
+    { v: 'req_main', t: 'جيت جعان، نبي طبق رئيسي يشبّع', ok: function(r){ return r.section === 'أطباق رئيسية'; }, bad: function(r){ return r.section !== 'أطباق رئيسية'; } },
+    { v: 'req_starter', t: 'نبي حاجة خفيفة نبدأ بيها', ok: function(r){ return r.section === 'مقبلات'; }, bad: function(r){ return r.section !== 'مقبلات'; } },
+    { v: 'req_meat', t: 'نبي أكلة فيها لحم', ok: function(r){ return has(r, MEATS); }, bad: function(r){ return !isMeaty(r); } },
+    { v: 'req_nomeat', t: 'ما ناكلش لحم ولا دجاج ولا حوت، نبي أكلة مالحة', ok: function(r){ return !isSweet(r) && !isMeaty(r); }, bad: function(r){ return isMeaty(r); } },
+    { v: 'req_fish', t: 'نبي حاجة فيها حوت', ok: function(r){ return has(r, FISH); }, bad: function(r){ return !has(r, FISH); } },
+    { v: 'req_bird', t: 'نبي أكلة فيها دجاج', ok: function(r){ return has(r, BIRD); }, bad: function(r){ return !has(r, BIRD); } }
+  ];
+  var SKIP_ING = STAPLE.concat(['sugar', 'flour', 'oil', 'oil_butter', 'butter', 'olive_oil', 'milk', 'lemon', 'orange_blossom', 'yeast', 'starch', 'eggs', 'salt', 'water']);
+  function ingReqs(){
+    var out = [];
+    Object.keys(ING).forEach(function(k){
+      if(SKIP_ING.indexOf(k) >= 0 || MEATS.indexOf(k) >= 0 || BIRD.indexOf(k) >= 0 || FISH.indexOf(k) >= 0) return;
+      out.push({ t: 'نبي حاجة فيها ' + ING[k].t, ok: function(r){ return mainOf(r).indexOf(k) >= 0; }, bad: function(r){ return r.ing.indexOf(k) < 0; } });
+    });
+    return out;
+  }
+  function usableReqs(){
+    return shuffle(REQS.concat(shuffle(ingReqs()).slice(0, 12))).filter(function(q){
+      return REC.filter(q.ok).length >= 1 && REC.filter(q.bad).length >= 3;
+    });
+  }
+  function buildGuests(){
+    var reqs = usableReqs(), guests = shuffle(GUESTS), used = {}, qs = [];
+    for(var i = 0; i < reqs.length && qs.length < NQ; i++){
+      var q = reqs[i];
+      var pool = REC.filter(function(r){ return q.ok(r) && !used[r.id]; });
+      if(!pool.length) pool = REC.filter(q.ok);
+      var r = pickOne(pool); used[r.id] = 1;
+      var wrong = sample(REC.filter(function(o){ return o.id !== r.id && q.bad(o) && !q.ok(o); }), 3);
+      if(wrong.length < 3) continue;
+      qs.push({ type: 'guest', r: r, guest: guests[qs.length % guests.length], req: q, options: shuffle([r].concat(wrong)), title: 'ضيف جديد وصل 🔔' });
+    }
+    return qs;
+  }
   var MAKERS = { guess: makeGuess, intruder: makeIntruder, order: makeOrder, fridge: makeFridge };
 
   function buildRound(mode){
     var recs = shuffle(REC);
+    if(mode === 'guest') return buildGuests();
     var types = mode === 'fridge'
       ? ['fridge', 'fridge', 'fridge', 'fridge', 'fridge']
       : shuffle(['guess', 'intruder', 'order', pickOne(['guess', 'intruder', 'order']), pickOne(['guess', 'intruder', 'order'])]);
@@ -570,7 +651,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
   function setPlate(q){
     var p = $('plate'); p.innerHTML = ''; p.className = 'plate';
     var dn = $('dishName');
-    if(q.type === 'guess' || q.type === 'fridge'){ p.hidden = true; dn.hidden = true; return; }
+    if(q.type === 'guess' || q.type === 'fridge' || q.type === 'guest'){ p.hidden = true; dn.hidden = true; return; }
     p.hidden = false; dn.hidden = false; dn.textContent = q.r.name;
     if(q.r.img){ p.classList.add('plate-photo'); var im = el('img'); im.src = q.r.img; im.alt = q.r.name; p.appendChild(im); }
     else { p.appendChild(el('span', 'plate-emoji', q.r.emoji || '🍽️')); }
@@ -586,7 +667,8 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     var qk = questionKeys(q);
     $('replay').hidden = !hasVoice(qk);
     $('replay').onclick = function(){ playVoice(qk); };
-    playVoice(qk);
+    if(q.type === 'guest'){ stopVoice(); vTimer = setTimeout(function(){ playVoice(qk); }, 900); }
+    else playVoice(qk);
     var stage = $('stage'); stage.innerHTML = '';
 
     if(q.type === 'guess'){
@@ -636,6 +718,26 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
         g3.appendChild(b);
       });
       stage.appendChild(g3);
+    }
+    else if(q.type === 'guest'){
+      sfx('bell');
+      var gc = el('div', 'guest');
+      var who = el('div', 'g-who');
+      var av = el('div', 'g-av', q.guest.e); av.id = 'gAv';
+      who.appendChild(av); who.appendChild(el('div', 'g-name', q.guest.n));
+      gc.appendChild(who); gc.appendChild(el('p', 'g-bubble', q.req.t));
+      stage.appendChild(gc);
+      stage.appendChild(el('p', 'hint', 'اختر الطبق الذي يناسب طلبه'));
+      var g4 = el('div', 'opts');
+      q.options.forEach(function(o){
+        var b = el('button', 'opt'); b.type = 'button';
+        b.appendChild(el('span', 'opt-e', o.emoji || '🍽️'));
+        b.appendChild(el('span', null, o.name));
+        if(o.id === q.r.id) b.setAttribute('data-correct', '1');
+        b.addEventListener('click', function(){ choose(b, o.id === q.r.id); });
+        g4.appendChild(b);
+      });
+      stage.appendChild(g4);
     }
     else if(q.type === 'intruder'){
       var g2 = el('div', 'opts');
@@ -710,7 +812,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     renderTop();
     stopVoice();
     sfx(ok ? 'correct' : (pts > 0 ? 'partial' : 'wrong'));
-    vTimer = setTimeout(function(){ playVoice([ok ? 'praise' : (pts > 0 ? 'fb_partial' : 'fb_wrong')]); }, 450);
+    vTimer = setTimeout(function(){ playVoice(q.type === 'guest' ? [q.guest.k + (ok ? '_ok' : '_no')] : [ok ? 'praise' : (pts > 0 ? 'fb_partial' : 'fb_wrong')]); }, 450);
     var fb = $('fb'); fb.innerHTML = ''; fb.hidden = false; fb.className = 'fb ' + (pts > 0 ? 'good' : 'bad');
 
     var head = el('div', 'fb-head');
@@ -721,6 +823,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     var msg;
     if(q.type === 'guess') msg = 'هذه مكوّنات «' + q.r.name + '»';
     else if(q.type === 'fridge') msg = 'بمكوّنات ثلاجتك تطبخ «' + q.r.name + '»';
+    else if(q.type === 'guest'){ msg = ok ? q.guest.ok : q.guest.no + ' الطبق المناسب: «' + q.r.name + '»'; var gav = $('gAv'); if(gav){ gav.textContent = ok ? '😋' : '😕'; gav.className = 'g-av ' + (ok ? 'happy' : 'sad'); } }
     else if(q.type === 'intruder') msg = '«' + ING[q.foreign].t + '» ما يدخلش في «' + q.r.name + '»';
     else msg = ok ? 'خطوات «' + q.r.name + '» بالترتيب الصحيح' : 'هذا هو الترتيب الصحيح لخطوات «' + q.r.name + '»';
     fb.appendChild(el('p', null, msg));
@@ -757,6 +860,12 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
   /* ---------- Result ---------- */
   function tier(n){
     var p = n / MAXPTS;
+    if(S && S.mode === 'guest'){
+      if(p === 1) return ['ست العزومة', 'كل الضيوف خرجوا مبسوطين.'];
+      if(p >= 0.8) return ['مضيفة ماهرة', 'ضيوفك مبسوطين، وواحد بس ما عجبوش الطبق.'];
+      if(p >= 0.5) return ['عزومة مقبولة', 'بعض الضيوف ما عجبهم الطبق. جرّب جولة أخرى.'];
+      return ['عزومة صعبة', 'الضيوف راحوا جعانين. جرّب مرة ثانية.'];
+    }
     if(p === 1) return ['نجم المطبخ الليبي', 'جمعت كل النقاط.'];
     if(p >= 0.8) return ['يد ماهرة في المطبخ', 'معرفتك بالأكل الليبي ممتازة.'];
     if(p >= 0.5) return ['في الطريق إلى الإتقان', 'معرفة جيدة. الوصفات في الموقع تكمل الباقي.'];
@@ -781,7 +890,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     $('rFridge').hidden = S.mode !== 'fridge';
 
     var url = CFG.gameUrl || location.href.split('#')[0];
-    var gname = S.mode === 'fridge' ? 'لعبة «شن عندك في الثلاجة؟»' : 'تحدّي المطبخ الليبي';
+    var gname = S.mode === 'fridge' ? 'لعبة «شن عندك في الثلاجة؟»' : (S.mode === 'guest' ? 'لعبة «العزومة»' : 'تحدّي المطبخ الليبي');
     var text = (perfect ? 'جمعت الدرجة الكاملة ' + n + ' من ' + MAXPTS + ' 🏆 في ' : 'جمعت ' + n + ' نقطة من ' + MAXPTS + ' في ') + gname + ' 🍲\n' + (perfect ? 'هل تستطيع مجاراتي؟' : 'هل تستطيع الوصول إلى 100؟') + '\n' + url;
     $('rShare').href = 'https://wa.me/?text=' + encodeURIComponent(text);
     $('rCopy').textContent = 'نسخ الرسالة';
@@ -805,7 +914,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     });
     sfx(perfect ? 'trophy' : (n / MAXPTS >= 0.8 ? 'win' : 'soft'));
     if(perfect){ confetti(); lastPraise = Math.floor(Math.random() * 3); vTimer = setTimeout(function(){ playVoice(['praise']); }, 1300); }
-    else setTimeout(function(){ playVoice(['res_retry']); }, 900);
+    else vTimer = setTimeout(function(){ playVoice(['res_retry']); }, 900);
     showScreen('result');
     track('finish-' + S.mode + '-' + n);
   }
@@ -842,6 +951,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
   /* ---------- Wiring ---------- */
   $('startMix').addEventListener('click', function(){ startGame('mix'); });
   $('startFridge').addEventListener('click', function(){ startGame('fridge'); });
+  $('startGuest').addEventListener('click', function(){ startGame('guest'); });
   $('rHome').addEventListener('click', function(){ stopVoice(); renderHome(); showScreen('home'); window.scrollTo(0,0); });
   /* روابط الموقع: داخل التطبيق نفتحها في نفس النافذة (فتح نافذة جديدة لا يعمل في التطبيق) */
   var STANDALONE = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || (document.referrer||'').indexOf('android-app://') === 0;
@@ -849,8 +959,22 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
     var a = e.target.closest && e.target.closest('a[target="_blank"]');
     if(!a || !STANDALONE) return;
     var u = a.getAttribute('href'); if(!u || u === '#') return;
-    e.preventDefault(); window.location.href = a.href;
+    e.preventDefault(); openExternal(a.href);
   });
+  /* داخل التطبيق (أندرويد): نفتح الرابط في متصفح الهاتف عبر intent، وإن لم يحدث شيء نجرّب فتحه مباشرة */
+  function openExternal(u){
+    var m = /^(https?):\/\/([^#]*)/i.exec(u);
+    if(m && /Android/i.test(navigator.userAgent)){
+      var left = false;
+      function onv(){ if(document.visibilityState === 'hidden'){ left = true; } }
+      document.addEventListener('visibilitychange', onv);
+      window.location.href = 'intent://' + m[2] + '#Intent;scheme=' + m[1].toLowerCase() + ';action=android.intent.action.VIEW;end';
+      setTimeout(function(){
+        document.removeEventListener('visibilitychange', onv);
+        if(!left){ var w = null; try{ w = window.open(u, '_blank'); }catch(err){} if(!w) window.location.href = u; }
+      }, 1300);
+    } else { window.location.href = u; }
+  }
   $('quit').addEventListener('click', function(){ stopVoice(); renderHome(); showScreen('home'); });
   $('snd').addEventListener('click', function(){
     SOUND = !SOUND;

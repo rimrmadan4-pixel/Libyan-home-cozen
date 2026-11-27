@@ -273,7 +273,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
 
     <section id="play" class="screen" hidden>
       <div class="topline">
-        <button class="quit" id="quit" type="button" aria-label="العودة إلى الصفحة الرئيسية">✕</button>
+        <button class="quit" id="quit" type="button" aria-label="الصفحة الرئيسية">🏠</button>
         <ol class="dots" id="dots" aria-label="تقدّم الأسئلة"></ol>
         <span class="pts" id="pts"></span>
         <button class="quit" id="snd" type="button" aria-label="تشغيل أو إيقاف الصوت">🔊</button>
@@ -306,6 +306,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
         <a class="btn fridge-cta" id="rFridge" href="#" target="_blank" rel="noopener" hidden>جرّب أداة الثلاجة الحقيقية في الموقع ↗</a>
         <a class="btn site" id="rSite" href="#" target="_blank" rel="noopener">تصفّح الوصفات الكاملة في الموقع ↗</a>
         <button class="btn ghost" id="rAgain" type="button">جولة جديدة</button>
+        <button class="btn ghost" id="rHome" type="button">🏠 الصفحة الرئيسية</button>
         <button class="btn ghost" id="rCopy" type="button">نسخ الرسالة</button>
       </div>
       <h3 class="recap-title">أطباق هذه الجولة</h3>
@@ -841,6 +842,15 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
   /* ---------- Wiring ---------- */
   $('startMix').addEventListener('click', function(){ startGame('mix'); });
   $('startFridge').addEventListener('click', function(){ startGame('fridge'); });
+  $('rHome').addEventListener('click', function(){ stopVoice(); renderHome(); showScreen('home'); window.scrollTo(0,0); });
+  /* روابط الموقع: داخل التطبيق نفتحها في نفس النافذة (فتح نافذة جديدة لا يعمل في التطبيق) */
+  var STANDALONE = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || (document.referrer||'').indexOf('android-app://') === 0;
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[target="_blank"]');
+    if(!a || !STANDALONE) return;
+    var u = a.getAttribute('href'); if(!u || u === '#') return;
+    e.preventDefault(); window.location.href = a.href;
+  });
   $('quit').addEventListener('click', function(){ stopVoice(); renderHome(); showScreen('home'); });
   $('snd').addEventListener('click', function(){
     SOUND = !SOUND;

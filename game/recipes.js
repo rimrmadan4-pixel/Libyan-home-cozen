@@ -28,7 +28,7 @@ window.GAME_DATA = {
     gameUrl: 'https://rimrmadan4-pixel.github.io/Libyan-home-cozen/game/',          // رابط صفحة اللعبة نفسها للمشاركة. إن تُرك فارغًا يُستعمل رابط الصفحة الحالية
     questions: 5,         // عدد الأسئلة في الجولة
     points: 20,           // نقاط كل سؤال
-    fridgeUrl: ''         // رابط أداة «شن عندك في الثلاجة؟» في موقعك (إن تُرك فارغًا يُفتح الموقع الرئيسي)
+    fridgeUrl: 'https://libyanhomecozen.vercel.app/#fridge'         // رابط أداة «شن عندك في الثلاجة؟» في موقعك (إن تُرك فارغًا يُفتح الموقع الرئيسي)
   },
 
   /*
@@ -152,7 +152,7 @@ window.GAME_DATA = {
   recipes: [
     {
       id: 'maqroud', name: 'مقروض ليبي معسل', emoji: '🍯', section: 'حلويات',
-      video: '00_libyan_maqroud_with_honey_syrup.mp4', img: 'maqroud.jpg', url: '',
+      video: '00_libyan_maqroud_with_honey_syrup.mp4', img: 'maqroud.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-0',
       ing: ['semolina_coarse', 'flour', 'oil_butter', 'dates', 'sesame', 'oil', 'sugar', 'water', 'lemon', 'orange_blossom'],
       main: ['semolina_coarse', 'flour', 'dates', 'sesame', 'sugar'],
       steps: [
@@ -163,7 +163,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'galaxy', video: '14_galaxy_basbousa.mp4', name: 'بسبوسة جالكسي', emoji: '🍰', section: 'حلويات', url: '',
+      id: 'galaxy', video: '14_galaxy_basbousa.mp4', name: 'بسبوسة جالكسي', emoji: '🍰', section: 'حلويات', url: 'https://libyanhomecozen.vercel.app/#recipe-14',
       ing: ['eggs', 'cream', 'coconut', 'oil', 'sugar', 'milk', 'semolina_med', 'flour', 'cocoa', 'baking_powder', 'condensed'],
       main: ['semolina_med', 'coconut', 'cream', 'cocoa', 'condensed', 'eggs'],
       steps: [
@@ -174,7 +174,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'ghraiba', name: 'الغريبة', emoji: '🍪', section: 'حلويات', video: '24_ghraiba.mp4', img: 'ghraiba.jpg', url: '',
+      id: 'ghraiba', name: 'الغريبة', emoji: '🍪', section: 'حلويات', video: '24_ghraiba.mp4', img: 'ghraiba.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-24',
       ing: ['ghee', 'oil', 'sugar', 'almonds', 'baking_powder', 'flour'],
       main: ['ghee', 'sugar', 'almonds', 'flour'],
       steps: [
@@ -185,7 +185,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'oreo', video: '33_oreo_cake.mp4', name: 'كيكة الأوريو', emoji: '🍫', section: 'حلويات', url: '',
+      id: 'oreo', video: '33_oreo_cake.mp4', name: 'كيكة الأوريو', emoji: '🍫', section: 'حلويات', url: 'https://libyanhomecozen.vercel.app/#recipe-33',
       ing: ['eggs', 'sugar', 'vanilla', 'milk', 'oil', 'flour', 'cocoa', 'baking_powder', 'oreo', 'cream', 'nescafe'],
       main: ['oreo', 'cocoa', 'eggs', 'cream', 'flour', 'milk'],
       steps: [
@@ -196,7 +196,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'latte', video: '40_latte_cake_no_bake.mp4', name: 'كيك لاتيه', emoji: '☕', section: 'حلويات', url: '',
+      id: 'latte', video: '40_latte_cake_no_bake.mp4', name: 'كيك لاتيه', emoji: '☕', section: 'حلويات', url: 'https://libyanhomecozen.vercel.app/#recipe-40',
       ing: ['biscuit', 'chantilly', 'caramel_cream', 'cream', 'condensed', 'nescafe', 'milk'],
       main: ['biscuit', 'chantilly', 'caramel_cream', 'condensed', 'nescafe', 'cream'],
       steps: [
@@ -207,7 +207,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'khobzat', name: 'خبزة كسكاس', emoji: '🫓', section: 'مقبلات', video: '08_couscous_bread.mp4', img: 'khobzat.jpg', url: '',
+      id: 'khobzat', name: 'خبزة كسكاس', emoji: '🫓', section: 'مقبلات', video: '08_couscous_bread.mp4', img: 'khobzat.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-8',
       ing: ['flour', 'yeast', 'sugar', 'salt', 'oil', 'water'],
       main: ['flour', 'yeast', 'sugar'],
       steps: [
@@ -218,7 +218,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'sfenj', video: '20_libyan_sfenj.mp4', img: 'sfenj.jpg', name: 'السفنز الليبي', emoji: '🍩', section: 'مقبلات', url: '',
+      id: 'sfenj', video: '20_libyan_sfenj.mp4', img: 'sfenj.jpg', name: 'السفنز الليبي', emoji: '🍩', section: 'مقبلات', url: 'https://libyanhomecozen.vercel.app/#recipe-20',
       ing: ['flour', 'water', 'yeast', 'sugar', 'salt', 'oil'],
       main: ['flour', 'yeast', 'sugar'],
       steps: [
@@ -229,7 +229,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'basla', video: '22_libyan_onion.mp4', name: 'البصلة الليبية', emoji: '🧅', section: 'أطباق رئيسية', url: '',
+      id: 'basla', video: '22_libyan_onion.mp4', name: 'البصلة الليبية', emoji: '🧅', section: 'أطباق رئيسية', url: 'https://libyanhomecozen.vercel.app/#recipe-22',
       ing: ['onion', 'chickpeas', 'bzar', 'cinnamon', 'salt', 'oil', 'water'],
       main: ['onion', 'chickpeas', 'cinnamon'],
       steps: [
@@ -240,7 +240,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'shorba', video: '26_libyan_soup.mp4', img: 'shorba.jpg', name: 'الشوربة الليبية', emoji: '🍲', section: 'أطباق رئيسية', url: '',
+      id: 'shorba', video: '26_libyan_soup.mp4', img: 'shorba.jpg', name: 'الشوربة الليبية', emoji: '🍲', section: 'أطباق رئيسية', url: 'https://libyanhomecozen.vercel.app/#recipe-26',
       ing: ['oil', 'tomato_paste', 'red_pepper', 'bzar', 'tomato', 'onion', 'meat', 'soup_grains', 'green_pepper', 'parsley', 'mint', 'water'],
       main: ['meat', 'soup_grains', 'tomato_paste', 'onion', 'tomato', 'mint'],
       steps: [
@@ -251,7 +251,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'mbakbka', name: 'مكرونة مبكبكة', emoji: '🍝', section: 'أطباق رئيسية', video: '25_mbakbka_macaroni.mp4', url: '',
+      id: 'mbakbka', name: 'مكرونة مبكبكة', emoji: '🍝', section: 'أطباق رئيسية', video: '25_mbakbka_macaroni.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-25',
       ing: ['pasta', 'oil', 'onion', 'green_pepper', 'tomato_paste', 'bzar', 'meat', 'smoked_pepper', 'cheddar', 'salt'],
       main: ['pasta', 'meat', 'onion', 'tomato_paste', 'smoked_pepper', 'cheddar'],
       steps: [
@@ -262,7 +262,7 @@ window.GAME_DATA = {
       ]
     },
     {
-      id: 'bazin', name: 'بازين باللحم', emoji: '🥘', section: 'أطباق رئيسية', video: '30_bazin_with_meat.mp4', img: 'bazin.jpg', url: '',
+      id: 'bazin', name: 'بازين باللحم', emoji: '🥘', section: 'أطباق رئيسية', video: '30_bazin_with_meat.mp4', img: 'bazin.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-30',
       ing: ['barley_flour', 'water', 'salt', 'oil', 'onion', 'tomato_paste', 'bzar', 'red_pepper', 'meat', 'fenugreek', 'potato', 'pumpkin', 'green_pepper'],
       main: ['barley_flour', 'meat', 'potato', 'pumpkin', 'tomato_paste', 'fenugreek'],
       steps: [
@@ -274,7 +274,7 @@ window.GAME_DATA = {
     },
     {
       id: 'marfousa', name: 'المرفوسة', emoji: '🍛', section: 'أطباق رئيسية',
-      video: '42_libyan_marfousa.mp4', img: 'marfousa.jpg', url: '',
+      video: '42_libyan_marfousa.mp4', img: 'marfousa.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-42',
       ing: ['flour', 'salt', 'water', 'oil', 'tomato_paste', 'green_onion', 'onion', 'garlic', 'green_pepper', 'red_pepper', 'bzar', 'black_pepper', 'green_tomato'],
       main: ['flour', 'tomato_paste', 'green_onion', 'onion', 'garlic', 'green_tomato'],
       steps: [
@@ -286,7 +286,7 @@ window.GAME_DATA = {
     },
     {
       id: 'fish_couscous', name: 'كسكسي بالحوت', emoji: '🐟', section: 'أطباق رئيسية',
-      video: '41_libyan_fish_couscous.mp4', img: 'fish_couscous.jpg', url: '',
+      video: '41_libyan_fish_couscous.mp4', img: 'fish_couscous.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-41',
       ing: ['oil', 'green_pepper', 'garlic', 'tomato_paste', 'red_pepper', 'bzar', 'water', 'fish', 'cumin', 'couscous', 'salt', 'potato', 'zucchini', 'eggplant'],
       main: ['fish', 'couscous', 'tomato_paste', 'garlic', 'zucchini', 'eggplant'],
       steps: [
@@ -298,7 +298,7 @@ window.GAME_DATA = {
     },
     {
       id: 'bureek', name: 'البوريك', emoji: '🥟', section: 'مقبلات',
-      video: '01_libyan_bureek.mp4', img: 'bureek.jpg', url: '',
+      video: '01_libyan_bureek.mp4', img: 'bureek.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-1',
       ing: ['flour', 'starch', 'salt', 'oil', 'onion', 'minced_meat', 'bzar', 'red_pepper', 'tomato_paste', 'parsley', 'green_pepper', 'eggs', 'potato'],
       main: ['flour', 'minced_meat', 'onion', 'parsley', 'eggs', 'potato'],
       steps: [
@@ -310,7 +310,7 @@ window.GAME_DATA = {
     },
     {
       id: 'bureek_jabda', name: 'بوريك الجبدة', emoji: '🥐', section: 'مقبلات',
-      video: '02_baked_bureek_jabda.mp4', img: 'bureek_jabda.jpg', url: '',
+      video: '02_baked_bureek_jabda.mp4', img: 'bureek_jabda.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-2',
       ing: ['bureek_sheets', 'butter', 'minced_meat', 'parsley', 'cheese', 'eggs'],
       main: ['bureek_sheets', 'minced_meat', 'butter', 'parsley', 'cheese'],
       steps: [
@@ -322,7 +322,7 @@ window.GAME_DATA = {
     },
     {
       id: 'scallop', name: 'طاجين سكالوب', emoji: '🍳', section: 'مقبلات',
-      video: '04_scallop_tajine_chicken_escalope.mp4', img: 'scallop.jpg', url: '',
+      video: '04_scallop_tajine_chicken_escalope.mp4', img: 'scallop.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-4',
       ing: ['chicken_breast', 'eggplant', 'tomato', 'green_pepper', 'potato', 'eggs', 'breadcrumbs', 'mozzarella', 'parsley', 'salt', 'thyme', 'rosemary', 'black_pepper', 'chicken_spice'],
       main: ['chicken_breast', 'potato', 'eggplant', 'mozzarella', 'eggs', 'breadcrumbs'],
       steps: [
@@ -334,7 +334,7 @@ window.GAME_DATA = {
     },
     {
       id: 'mubattan', name: 'المبطن الليبي', emoji: '🥔', section: 'مقبلات',
-      video: '07_libyan_stuffed_potato_mubattan.mp4', img: 'mubattan.jpg', url: '',
+      video: '07_libyan_stuffed_potato_mubattan.mp4', img: 'mubattan.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-7',
       ing: ['potato', 'salt', 'water', 'flour', 'eggs', 'breadcrumbs', 'oil', 'minced_meat', 'parsley', 'onion', 'tomato_paste', 'bzar'],
       main: ['potato', 'minced_meat', 'parsley', 'onion', 'eggs', 'breadcrumbs'],
       steps: [
@@ -346,7 +346,7 @@ window.GAME_DATA = {
     },
     {
       id: 'shawarma', name: 'شاورما مقلية', emoji: '🌯', section: 'مقبلات',
-      video: '11_fried_shawarma.mp4', img: 'shawarma.jpg', url: '',
+      video: '11_fried_shawarma.mp4', img: 'shawarma.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-11',
       ing: ['bureek_sheets', 'cheese', 'eggs', 'milk', 'breadcrumbs', 'oil', 'chicken_breast', 'onion', 'black_pepper', 'salt', 'thyme', 'garlic', 'green_pepper'],
       main: ['bureek_sheets', 'chicken_breast', 'cheese', 'eggs', 'breadcrumbs', 'onion'],
       steps: [
@@ -358,7 +358,7 @@ window.GAME_DATA = {
     },
     {
       id: 'kalash', name: 'كب القلاش بالكبدة', emoji: '🧁', section: 'مقبلات',
-      video: '13_liver_kalash_cups.mp4', url: '',
+      video: '13_liver_kalash_cups.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-13',
       ing: ['kalash_sheets', 'ghee', 'liver'],
       main: ['kalash_sheets', 'ghee', 'liver'],
       steps: [
@@ -370,7 +370,7 @@ window.GAME_DATA = {
     },
     {
       id: 'dolma', name: 'الضولمة (البراك)', emoji: '🥬', section: 'أطباق رئيسية',
-      video: '17_dolma_barak_stuffed_chard.mp4', img: 'dolma.jpg', url: '',
+      video: '17_dolma_barak_stuffed_chard.mp4', img: 'dolma.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-17',
       ing: ['chard', 'parsley', 'dill', 'coriander', 'green_pepper', 'garlic', 'rice', 'meat', 'tomato_paste', 'bzar', 'salt', 'black_pepper', 'oil', 'onion'],
       main: ['chard', 'parsley', 'rice', 'meat', 'tomato_paste', 'green_pepper'],
       steps: [
@@ -382,7 +382,7 @@ window.GAME_DATA = {
     },
     {
       id: 'skewers', name: 'أسياخ الدجاج المقلية', emoji: '🍢', section: 'مقبلات',
-      video: '19_fried_chicken_skewers.mp4', url: '',
+      video: '19_fried_chicken_skewers.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-19',
       ing: ['chicken_breast', 'potato', 'green_pepper', 'tomato', 'onion', 'oil', 'olive_oil', 'garlic', 'salt', 'rosemary', 'thyme', 'black_pepper', 'flour', 'eggs', 'milk', 'breadcrumbs'],
       main: ['chicken_breast', 'potato', 'green_pepper', 'tomato', 'onion', 'breadcrumbs'],
       steps: [
@@ -394,7 +394,7 @@ window.GAME_DATA = {
     },
     {
       id: 'khulasa', name: 'الخلاصة', emoji: '🍗', section: 'مقبلات',
-      video: '21_khulasa_potato_wrapped_chicken_rolls.mp4', url: '',
+      video: '21_khulasa_potato_wrapped_chicken_rolls.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-21',
       ing: ['potato', 'chicken_breast', 'salt', 'black_pepper', 'green_pepper', 'tomato', 'eggplant', 'flour', 'eggs', 'milk', 'breadcrumbs', 'oil'],
       main: ['potato', 'chicken_breast', 'green_pepper', 'tomato', 'eggplant', 'breadcrumbs'],
       steps: [
@@ -406,7 +406,7 @@ window.GAME_DATA = {
     },
     {
       id: 'basti', name: 'كيكة باسطي', emoji: '🎂', section: 'حلويات',
-      video: '15_basti_dry_cake.mp4', img: 'basti.jpg', url: '',
+      video: '15_basti_dry_cake.mp4', img: 'basti.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-15',
       ing: ['eggs', 'vanilla', 'sugar', 'milk', 'oil', 'flour', 'baking_powder', 'lemon', 'orange'],
       main: ['eggs', 'sugar', 'milk', 'flour', 'vanilla'],
       steps: [
@@ -418,7 +418,7 @@ window.GAME_DATA = {
     },
     {
       id: 'tabahaj', name: 'طباج', emoji: '🍆', section: 'أطباق رئيسية',
-      video: '38_tabahaj_baked_layered_vegetables_and_mea.mp4', url: '',
+      video: '38_tabahaj_baked_layered_vegetables_and_mea.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-38',
       ing: ['onion', 'potato', 'eggplant', 'green_tomato', 'green_pepper', 'meat', 'tomato_paste', 'bzar', 'red_pepper', 'garlic', 'oil', 'salt', 'water', 'black_pepper'],
       main: ['onion', 'potato', 'eggplant', 'green_tomato', 'meat', 'tomato_paste'],
       steps: [
@@ -430,7 +430,7 @@ window.GAME_DATA = {
     },
     {
       id: 'zamaniya', name: 'بسبوسة زمنية بجوز الهند', emoji: '🥥', section: 'حلويات',
-      video: '35_zamaniya_basbousa_with_coconut.mp4', img: 'zamaniya.jpg', url: '',
+      video: '35_zamaniya_basbousa_with_coconut.mp4', img: 'zamaniya.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-35',
       ing: ['semolina_med', 'flour', 'eggs', 'vanilla', 'sugar', 'oil', 'milk', 'coconut', 'cream', 'baking_powder', 'water', 'lemon', 'cinnamon'],
       main: ['semolina_med', 'coconut', 'eggs', 'flour', 'sugar', 'milk'],
       steps: [
@@ -442,7 +442,7 @@ window.GAME_DATA = {
     },
     {
       id: 'rishta', name: 'رشدة كسكاس', emoji: '🍜', section: 'أطباق رئيسية',
-      video: '28_rishta_couscous.mp4', img: 'rishta.jpg', url: '',
+      video: '28_rishta_couscous.mp4', img: 'rishta.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-28',
       ing: ['rishta', 'oil', 'onion', 'tomato_paste', 'red_pepper', 'bzar', 'salt', 'meat', 'water', 'green_pepper', 'parsley'],
       main: ['rishta', 'meat', 'onion', 'tomato_paste', 'green_pepper'],
       steps: [
@@ -453,7 +453,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'cheese_tajine', name: 'طاجين الجبن', emoji: '🍳', section: 'أطباق رئيسية', video: '03_cheese_tajine.mp4', img: 'cheese_tajine.jpg', url: '',
+      id: 'cheese_tajine', name: 'طاجين الجبن', emoji: '🍳', section: 'أطباق رئيسية', video: '03_cheese_tajine.mp4', img: 'cheese_tajine.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-3',
       ing: ['potato', 'eggs', 'parsley', 'minced_meat', 'cheese'],
       main: ['potato', 'eggs', 'minced_meat', 'cheese', 'parsley'],
       steps: [
@@ -464,7 +464,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'layered_tajine', name: 'طاجين طبقات', emoji: '🥘', section: 'أطباق رئيسية', video: '05_layered_tajine.mp4', url: '',
+      id: 'layered_tajine', name: 'طاجين طبقات', emoji: '🥘', section: 'أطباق رئيسية', video: '05_layered_tajine.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-5',
       ing: ['potato', 'eggs', 'chicken_breast', 'minced_meat', 'cheese', 'parsley'],
       main: ['potato', 'eggs', 'minced_meat', 'cheese'],
       steps: [
@@ -475,7 +475,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'lafshkiri', name: 'طاجين لافشكيري', emoji: '🍆', section: 'أطباق رئيسية', video: '06_lafshkiri_tajine.mp4', img: 'lafshkiri.jpg', url: '',
+      id: 'lafshkiri', name: 'طاجين لافشكيري', emoji: '🍆', section: 'أطباق رئيسية', video: '06_lafshkiri_tajine.mp4', img: 'lafshkiri.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-6',
       ing: ['potato', 'eggplant', 'parsley', 'cheese', 'black_pepper', 'harissa', 'minced_meat', 'onion', 'eggs', 'mozzarella', 'milk'],
       main: ['potato', 'eggplant', 'minced_meat', 'mozzarella', 'eggs'],
       steps: [
@@ -486,7 +486,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'samurai', name: 'صوص الساموراي المدخّن', emoji: '🌶️', section: 'مقبلات', video: '10_smoked_samurai_sauce.mp4', img: 'samurai.jpg', url: '',
+      id: 'samurai', name: 'صوص الساموراي المدخّن', emoji: '🌶️', section: 'مقبلات', video: '10_smoked_samurai_sauce.mp4', img: 'samurai.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-10',
       ing: ['smoked_pepper', 'water', 'cheese', 'milk', 'oil', 'garlic'],
       main: ['smoked_pepper', 'cheese', 'milk', 'garlic', 'oil'],
       steps: [
@@ -497,7 +497,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'fried_toast', name: 'توست مقلي', emoji: '🍞', section: 'مقبلات', video: '12_fried_toast.mp4', img: 'fried_toast.jpg', url: '',
+      id: 'fried_toast', name: 'توست مقلي', emoji: '🍞', section: 'مقبلات', video: '12_fried_toast.mp4', img: 'fried_toast.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-12',
       ing: ['toast_bread', 'eggs', 'milk', 'breadcrumbs', 'tuna', 'arugula', 'green_tomato', 'oil'],
       main: ['toast_bread', 'eggs', 'milk', 'breadcrumbs'],
       steps: [
@@ -508,7 +508,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'asban', name: 'عصبان', emoji: '🍲', section: 'أطباق رئيسية', video: '16_asban_stuffed_intestines.mp4', url: '',
+      id: 'asban', name: 'عصبان', emoji: '🍲', section: 'أطباق رئيسية', video: '16_asban_stuffed_intestines.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-16',
       ing: ['intestines', 'parsley', 'dill', 'coriander', 'green_onion', 'onion', 'green_pepper', 'garlic', 'rice', 'liver', 'tomato_paste', 'red_pepper', 'bzar', 'salt', 'black_pepper'],
       main: ['intestines', 'rice', 'liver', 'parsley', 'garlic', 'green_pepper'],
       steps: [
@@ -519,7 +519,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'bureek_tajine', name: 'طاجين البوريك', emoji: '🥧', section: 'أطباق رئيسية', video: '18_bureek_tajine.mp4', url: '',
+      id: 'bureek_tajine', name: 'طاجين البوريك', emoji: '🥧', section: 'أطباق رئيسية', video: '18_bureek_tajine.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-18',
       ing: ['bureek_sheets', 'potato', 'eggs', 'minced_meat', 'tomato_paste', 'parsley', 'breadcrumbs', 'cheese', 'olives'],
       main: ['bureek_sheets', 'potato', 'eggs', 'minced_meat', 'cheese'],
       steps: [
@@ -530,7 +530,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'couscous_onion', name: 'كسكسي بالبصلة', emoji: '🥣', section: 'أطباق رئيسية', video: '23_couscous_with_onion.mp4', url: '',
+      id: 'couscous_onion', name: 'كسكسي بالبصلة', emoji: '🥣', section: 'أطباق رئيسية', video: '23_couscous_with_onion.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-23',
       ing: ['couscous', 'oil', 'onion', 'green_pepper', 'tomato_paste', 'red_pepper', 'bzar', 'salt', 'meat', 'cinnamon', 'coriander', 'ghee', 'orange_blossom'],
       main: ['couscous', 'meat', 'onion', 'tomato_paste', 'ghee'],
       steps: [
@@ -541,7 +541,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'rice_onion', name: 'أرز بالبصلة', emoji: '🍚', section: 'أطباق رئيسية', video: '27_rice_with_onion.mp4', img: 'rice_onion.jpg', url: '',
+      id: 'rice_onion', name: 'أرز بالبصلة', emoji: '🍚', section: 'أطباق رئيسية', video: '27_rice_with_onion.mp4', img: 'rice_onion.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-27',
       ing: ['rice', 'oil', 'onion', 'tomato_paste', 'red_pepper', 'bzar', 'salt', 'meat', 'water', 'cinnamon', 'potato', 'eggs'],
       main: ['rice', 'meat', 'onion', 'tomato_paste', 'oil'],
       steps: [
@@ -552,7 +552,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'rishta_barma', name: 'رشدة برمة (مقطّع)', emoji: '🍝', section: 'أطباق رئيسية', video: '29_rishta_barma_maqta.mp4', img: 'rishta_barma.jpg', url: '',
+      id: 'rishta_barma', name: 'رشدة برمة (مقطّع)', emoji: '🍝', section: 'أطباق رئيسية', video: '29_rishta_barma_maqta.mp4', img: 'rishta_barma.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-29',
       ing: ['flour', 'water', 'salt', 'qadid', 'onion', 'tomato_paste', 'bzar', 'green_pepper', 'garlic', 'dill', 'oil'],
       main: ['flour', 'qadid', 'onion', 'tomato_paste', 'garlic'],
       steps: [
@@ -563,7 +563,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'rice_pilaf', name: 'أرز بلاو (بالخلطة)', emoji: '🍛', section: 'أطباق رئيسية', video: '31_rice_pilaf_with_liver_and_nuts.mp4', img: 'rice_pilaf.jpg', url: '',
+      id: 'rice_pilaf', name: 'أرز بلاو (بالخلطة)', emoji: '🍛', section: 'أطباق رئيسية', video: '31_rice_pilaf_with_liver_and_nuts.mp4', img: 'rice_pilaf.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-31',
       ing: ['rice', 'liver', 'onion', 'clove', 'green_pepper', 'green_tomato', 'cinnamon', 'black_pepper', 'ghee', 'oil', 'almonds', 'cashew', 'orange_blossom'],
       main: ['rice', 'liver', 'onion', 'ghee', 'almonds'],
       steps: [
@@ -574,7 +574,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'bounty', name: 'كيكة الباونتي', emoji: '🍫', section: 'حلويات', video: '32_bounty_cake.mp4', img: 'bounty.jpg', url: '',
+      id: 'bounty', name: 'كيكة الباونتي', emoji: '🍫', section: 'حلويات', video: '32_bounty_cake.mp4', img: 'bounty.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-32',
       ing: ['eggs', 'oil', 'sugar', 'vanilla', 'cocoa', 'flour', 'baking_powder', 'nescafe', 'coconut', 'semolina_med', 'milk', 'choc', 'whip_cream'],
       main: ['eggs', 'cocoa', 'coconut', 'semolina_med', 'whip_cream', 'milk'],
       steps: [
@@ -585,7 +585,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'veg_bread', name: 'خبازة خضراء', emoji: '🍞', section: 'أطباق رئيسية', video: '34_vegetable_bread_with_liver.mp4', url: '',
+      id: 'veg_bread', name: 'خبازة خضراء', emoji: '🍞', section: 'أطباق رئيسية', video: '34_vegetable_bread_with_liver.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-34',
       ing: ['flour', 'water', 'sugar', 'salt', 'olive_oil', 'yeast', 'parsley', 'dill', 'coriander', 'green_onion', 'olives', 'thyme', 'mozzarella', 'harissa', 'liver', 'garlic', 'green_pepper', 'black_pepper', 'cumin', 'turmeric', 'sesame'],
       main: ['flour', 'yeast', 'parsley', 'liver', 'mozzarella', 'olive_oil'],
       steps: [
@@ -596,7 +596,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'burger_tajine', name: 'طاجين البرجر', emoji: '🍔', section: 'أطباق رئيسية', video: '36_burger_tajine.mp4', url: '',
+      id: 'burger_tajine', name: 'طاجين البرجر', emoji: '🍔', section: 'أطباق رئيسية', video: '36_burger_tajine.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-36',
       ing: ['flour', 'minced_meat', 'onion', 'eggs', 'potato', 'harissa', 'cheese', 'black_pepper', 'cinnamon', 'sesame', 'turmeric'],
       main: ['minced_meat', 'onion', 'eggs', 'potato', 'cheese'],
       steps: [
@@ -607,7 +607,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'ghazala', name: 'بسبوسة الغزالة', emoji: '🍰', section: 'حلويات', video: '37_ghazala_basbousa.mp4', img: 'ghazala.jpg', url: '',
+      id: 'ghazala', name: 'بسبوسة الغزالة', emoji: '🍰', section: 'حلويات', video: '37_ghazala_basbousa.mp4', img: 'ghazala.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-37',
       ing: ['semolina_med', 'coconut', 'oil', 'vanilla', 'cream', 'starch', 'sugar', 'flour', 'lemon', 'water'],
       main: ['semolina_med', 'coconut', 'cream', 'starch', 'sugar'],
       steps: [
@@ -618,7 +618,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'cocoa_cake', name: 'كيكة شراب الكاكاو', emoji: '🍫', section: 'حلويات', video: '39_cocoa_syrup_cake_hot_chocolate_cake.mp4', img: 'cocoa_cake.jpg', url: '',
+      id: 'cocoa_cake', name: 'كيكة شراب الكاكاو', emoji: '🍫', section: 'حلويات', video: '39_cocoa_syrup_cake_hot_chocolate_cake.mp4', img: 'cocoa_cake.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-39',
       ing: ['eggs', 'vanilla', 'sugar', 'milk', 'oil', 'cocoa', 'nescafe', 'baking_powder', 'flour'],
       main: ['eggs', 'cocoa', 'milk', 'nescafe', 'sugar'],
       steps: [
@@ -629,7 +629,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'qadid_eggs', name: 'طبيخة الدحي بالقديد', emoji: '🍳', section: 'أطباق رئيسية', video: '43_eggs_with_qadid_stew.mp4', img: 'qadid_eggs.jpg', url: '',
+      id: 'qadid_eggs', name: 'طبيخة الدحي بالقديد', emoji: '🍳', section: 'أطباق رئيسية', video: '43_eggs_with_qadid_stew.mp4', img: 'qadid_eggs.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-43',
       ing: ['qadid', 'onion', 'tomato', 'garlic', 'tomato_paste', 'salt', 'red_pepper', 'turmeric', 'cumin', 'eggs', 'oil', 'water'],
       main: ['qadid', 'onion', 'tomato', 'eggs', 'garlic'],
       steps: [
@@ -640,7 +640,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'aish_qarqoush', name: 'عيش بالقرقوش', emoji: '🍲', section: 'أطباق رئيسية', video: '44_aish_with_qarqoush.mp4', img: 'aish_qarqoush.jpg', url: '',
+      id: 'aish_qarqoush', name: 'عيش بالقرقوش', emoji: '🍲', section: 'أطباق رئيسية', video: '44_aish_with_qarqoush.mp4', img: 'aish_qarqoush.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-44',
       ing: ['qadid', 'olive_oil', 'dried_veg', 'tomato_paste', 'red_pepper', 'bzar', 'flour', 'water', 'salt', 'oil'],
       main: ['qadid', 'olive_oil', 'tomato_paste', 'flour', 'dried_veg'],
       steps: [
@@ -651,7 +651,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'beans_tripe', name: 'فاصوليا بالكرشة', emoji: '🫘', section: 'أطباق رئيسية', video: '45_libyan_beans_with_tripe.mp4', img: 'beans_tripe.jpg', url: '',
+      id: 'beans_tripe', name: 'فاصوليا بالكرشة', emoji: '🫘', section: 'أطباق رئيسية', video: '45_libyan_beans_with_tripe.mp4', img: 'beans_tripe.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-45',
       ing: ['beans', 'onion', 'oil', 'sheep_fat', 'tomato_paste', 'bzar', 'red_pepper', 'salt', 'water', 'parsley', 'tripe', 'green_pepper'],
       main: ['beans', 'tripe', 'onion', 'tomato_paste', 'sheep_fat'],
       steps: [
@@ -662,7 +662,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'fennel_couscous', name: 'كسكسي بالعسلوز', emoji: '🥣', section: 'أطباق رئيسية', video: '46_couscous_with_wild_fennel.mp4', img: 'fennel_couscous.jpg', url: '',
+      id: 'fennel_couscous', name: 'كسكسي بالعسلوز', emoji: '🥣', section: 'أطباق رئيسية', video: '46_couscous_with_wild_fennel.mp4', img: 'fennel_couscous.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-46',
       ing: ['couscous', 'fennel', 'oil', 'onion', 'garlic', 'tomato', 'red_pepper', 'green_pepper', 'dried_veg', 'water', 'coriander'],
       main: ['couscous', 'fennel', 'onion', 'garlic', 'tomato'],
       steps: [
@@ -673,7 +673,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'mathrouda', name: 'مثرودة', emoji: '🍞', section: 'أطباق رئيسية', video: '47_libyan_mathrouda.mp4', img: 'mathrouda.jpg', url: '',
+      id: 'mathrouda', name: 'مثرودة', emoji: '🍞', section: 'أطباق رئيسية', video: '47_libyan_mathrouda.mp4', img: 'mathrouda.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-47',
       ing: ['flour', 'salt', 'water', 'ghee', 'almonds'],
       main: ['flour', 'salt', 'water', 'ghee'],
       steps: [
@@ -684,7 +684,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'abouda', name: 'عبودة', emoji: '🌿', section: 'أطباق رئيسية', video: '48_libyan_abouda.mp4', img: 'abouda.jpg', url: '',
+      id: 'abouda', name: 'عبودة', emoji: '🌿', section: 'أطباق رئيسية', video: '48_libyan_abouda.mp4', img: 'abouda.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-48',
       ing: ['parsley', 'coriander', 'dill', 'onion', 'sheep_fat', 'meat', 'tomato_paste', 'red_pepper', 'bzar', 'salt'],
       main: ['parsley', 'coriander', 'onion', 'sheep_fat', 'meat', 'tomato_paste'],
       steps: [
@@ -695,7 +695,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'rice_caramel', name: 'أرز باللحم والبصل المكرمل', emoji: '🍚', section: 'أطباق رئيسية', video: '49_rice_with_meat_and_caramelized_onion.mp4', img: 'rice_caramel.jpg', url: '',
+      id: 'rice_caramel', name: 'أرز باللحم والبصل المكرمل', emoji: '🍚', section: 'أطباق رئيسية', video: '49_rice_with_meat_and_caramelized_onion.mp4', img: 'rice_caramel.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-49',
       ing: ['rice', 'oil', 'onion', 'meat', 'sheep_fat', 'tomato_paste', 'bzar', 'red_pepper', 'cumin', 'ghee', 'water', 'parsley', 'potato'],
       main: ['rice', 'meat', 'onion', 'tomato_paste', 'oil'],
       steps: [
@@ -706,7 +706,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'qalaya', name: 'القلاية (المصلّي) التراثية', emoji: '🥘', section: 'أطباق رئيسية', video: '50_traditional_libyan_qalaya_musalli.mp4', url: '',
+      id: 'qalaya', name: 'القلاية (المصلّي) التراثية', emoji: '🥘', section: 'أطباق رئيسية', video: '50_traditional_libyan_qalaya_musalli.mp4', url: 'https://libyanhomecozen.vercel.app/#recipe-50',
       ing: ['meat', 'sheep_fat', 'liver', 'black_pepper', 'salt', 'oil', 'water'],
       main: ['meat', 'sheep_fat', 'liver', 'black_pepper'],
       steps: [
@@ -717,7 +717,7 @@ window.GAME_DATA = {
       ]
     }
     ,{
-      id: 'orange_nutella', name: 'كيكة البرتقال بالنوتيلا', emoji: '🍊', section: 'حلويات', video: '51_orange_nutella_layer_cake.mp4', img: 'orange_nutella.jpg', url: '',
+      id: 'orange_nutella', name: 'كيكة البرتقال بالنوتيلا', emoji: '🍊', section: 'حلويات', video: '51_orange_nutella_layer_cake.mp4', img: 'orange_nutella.jpg', url: 'https://libyanhomecozen.vercel.app/#recipe-51',
       ing: ['biscuit', 'butter', 'cream', 'nutella', 'orange', 'sugar', 'milk', 'oil', 'flour', 'baking_powder', 'banana', 'eggs'],
       main: ['orange', 'nutella', 'biscuit', 'butter', 'cream'],
       steps: [

@@ -963,7 +963,7 @@ h2{margin:0; font:700 1.6rem/1.6 var(--f-display); color:var(--ink); text-wrap:b
   });
   /* داخل التطبيق (أندرويد): نفتح الرابط في متصفح الهاتف عبر intent، وإن لم يحدث شيء نجرّب فتحه مباشرة */
   function openExternal(u){
-    var m = /^(https?):\/\/([^#]*)/i.exec(u);
+    var m = /^(https?):\/\/(.*)$/i.exec(u);
     if(m && /Android/i.test(navigator.userAgent)){
       var left = false;
       function onv(){ if(document.visibilityState === 'hidden'){ left = true; } }
